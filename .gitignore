@@ -34,3 +34,5 @@ yarn-error.log*
 
 src
 demo
+.github
+.gitignore
