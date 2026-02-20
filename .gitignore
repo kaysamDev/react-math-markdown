@@ -35,3 +35,4 @@ yarn-error.log*
 # Source & demo (published via npm only)
 src
 demo
+.gitignore
