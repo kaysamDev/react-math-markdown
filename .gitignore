@@ -32,7 +32,6 @@ yarn-error.log*
 *.tmp
 .cache
 
+# Source & demo (published via npm only)
 src
 demo
-.github
-.gitignore
