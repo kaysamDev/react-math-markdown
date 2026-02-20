@@ -35,14 +35,13 @@ npm install draft-js
 You must include the KaTeX stylesheet in your app. Choose one method:
 
 **Option A — HTML link (recommended)**
+
 ```html
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
-/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
 ```
 
 **Option B — CSS import**
+
 ```css
 @import 'katex/dist/katex.min.css';
 ```
@@ -52,7 +51,7 @@ You must include the KaTeX stylesheet in your app. Choose one method:
 ### Rendering Markdown + Math
 
 ```tsx
-import { MathMarkdown } from 'react-math-markdown';
+import { MathMarkdown } from 'react-math-markdown'
 
 function MyComponent() {
   const content = `
@@ -69,16 +68,16 @@ x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}
 | \\(a\\)  | coefficient     |
 | \\(b\\)  | coefficient     |
 | \\(c\\)  | constant term   |
-  `;
+  `
 
-  return <MathMarkdown content={content} />;
+  return <MathMarkdown content={content} />
 }
 ```
 
 ### With Custom Styling
 
 ```tsx
-import { MathMarkdown } from 'react-math-markdown';
+import { MathMarkdown } from 'react-math-markdown'
 
 function StyledMath() {
   return (
@@ -86,39 +85,29 @@ function StyledMath() {
       content="The integral \\(\\int_0^1 x^2 dx = \\frac{1}{3}\\)"
       className="my-math-container"
       components={{
-        table: ({ children }) => (
-          <table className="my-custom-table">{children}</table>
-        ),
-        blockquote: ({ children }) => (
-          <blockquote className="my-quote">{children}</blockquote>
-        ),
+        table: ({ children }) => <table className="my-custom-table">{children}</table>,
+        blockquote: ({ children }) => <blockquote className="my-quote">{children}</blockquote>,
       }}
     />
-  );
+  )
 }
 ```
 
 ### Draft.js Conversion
 
 ```tsx
-import { useState } from 'react';
-import { Editor, EditorState } from 'draft-js';
-import {
-  markdownToDraftState,
-  draftStateToMarkdown,
-  MathMarkdown,
-} from 'react-math-markdown';
+import { useState } from 'react'
+import { Editor, EditorState } from 'draft-js'
+import { markdownToDraftState, draftStateToMarkdown, MathMarkdown } from 'react-math-markdown'
 
 function MarkdownEditor() {
-  const markdown = '**Hello** world with \\(x^2\\)';
-  const [editorState, setEditorState] = useState(
-    () => markdownToDraftState(markdown)
-  );
+  const markdown = '**Hello** world with \\(x^2\\)'
+  const [editorState, setEditorState] = useState(() => markdownToDraftState(markdown))
 
   const handleExport = () => {
-    const md = draftStateToMarkdown(editorState);
-    console.log(md); // "**Hello** world with \(x^2\)"
-  };
+    const md = draftStateToMarkdown(editorState)
+    console.log(md) // "**Hello** world with \(x^2\) "
+  }
 
   return (
     <div>
@@ -130,19 +119,17 @@ function MarkdownEditor() {
 
       <button onClick={handleExport}>Export Markdown</button>
     </div>
-  );
+  )
 }
 ```
 
 ### Delimiter Preprocessing (Advanced)
 
 ```tsx
-import { preprocessDelimiters } from 'react-math-markdown';
+import { preprocessDelimiters } from 'react-math-markdown'
 
 // Converts \(...\) to $...$ and \[...\] to $$...$$
-const normalized = preprocessDelimiters(
-  'Solve \\(x^2 + 1 = 0\\) and display:\\[x = \\pm i\\]'
-);
+const normalized = preprocessDelimiters('Solve \\(x^2 + 1 = 0\\) and display:\\[x = \\pm i\\]')
 // Result: "Solve $x^2 + 1 = 0$ and display:$$x = \\pm i$$"
 ```
 
@@ -152,13 +139,14 @@ const normalized = preprocessDelimiters(
 
 The main rendering component.
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `content` | `string` | *required* | Markdown string with optional LaTeX math |
-| `className` | `string` | `undefined` | CSS class for the wrapper `<div>` |
+| Prop         | Type                      | Default                    | Description                                     |
+| ------------ | ------------------------- | -------------------------- | ----------------------------------------------- |
+| `content`    | `string`                  | _required_                 | Markdown string with optional LaTeX math        |
+| `className`  | `string`                  | `undefined`                | CSS class for the wrapper `<div>`               |
 | `components` | `ReactMarkdownComponents` | Built-in styled components | Override rendered elements (tables, code, etc.) |
 
 **Supported math delimiters:**
+
 - Inline: `\(...\)` or `$...$`
 - Display: `\[...\]` or `$$...$$`
 
@@ -171,14 +159,16 @@ The main rendering component.
 Converts a Markdown string to a Draft.js `EditorState`.
 
 **Supported block types:**
+
 - Headings (`# ` through `###### `)
 - Unordered lists (`- `, `* `, `+ `)
 - Ordered lists (`1. `, `2. `)
 - Blockquotes (`> `)
-- Code blocks (`` ``` ``)
+- Code blocks (` ``` `)
 - Paragraphs
 
 **Supported inline styles:**
+
 - Bold (`**text**`)
 - Italic (`*text*`)
 - Underline (`<u>text</u>`)
@@ -186,6 +176,7 @@ Converts a Markdown string to a Draft.js `EditorState`.
 - Inline code (`` `text` ``)
 
 **Special handling:**
+
 - LaTeX delimiters `\(...\)` are preserved as literal text
 - Table pipe syntax preserved as unstyled blocks
 - Accepts pre-serialized Draft.js JSON (auto-detected via `JSON.parse`)
@@ -197,6 +188,7 @@ Converts a Markdown string to a Draft.js `EditorState`.
 Converts a Draft.js `EditorState` back to a Markdown string.
 
 **Handles:**
+
 - All block types → appropriate Markdown syntax
 - Overlapping/nested inline styles with correct marker interleaving
 - Table lines preserved verbatim
@@ -207,27 +199,28 @@ Converts a Draft.js `EditorState` back to a Markdown string.
 
 Normalizes LaTeX delimiters for KaTeX compatibility.
 
-| Input | Output |
-|-------|--------|
-| `\(x^2\)` | `$x^2$` |
-| `\[x^2\]` | `$$x^2$$` |
-| `$x^2$` | `$x^2$` (unchanged) |
-| Content inside code fences | Unchanged |
+| Input                      | Output              |
+| -------------------------- | ------------------- |
+| `\(x^2\)`                  | `$x^2$`             |
+| `\[x^2\]`                  | `$$x^2$$`           |
+| `$x^2$`                    | `$x^2$` (unchanged) |
+| Content inside code fences | Unchanged           |
 
 ## Math Delimiter Guide
 
-| Style | Input | Renders as |
-|-------|-------|------------|
-| Inline | `\(E = mc^2\)` | Inline math: *E = mc²* |
-| Inline | `$E = mc^2$` | Inline math: *E = mc²* |
-| Display | `\[E = mc^2\]` | Centered display math |
-| Display | `$$E = mc^2$$` | Centered display math |
+| Style   | Input          | Renders as             |
+| ------- | -------------- | ---------------------- |
+| Inline  | `\(E = mc^2\)` | Inline math: _E = mc²_ |
+| Inline  | `$E = mc^2$`   | Inline math: _E = mc²_ |
+| Display | `\[E = mc^2\]` | Centered display math  |
+| Display | `$$E = mc^2$$` | Centered display math  |
 
 ## Supported LaTeX
 
 All standard KaTeX functions are supported. See the [KaTeX function support table](https://katex.org/docs/support_table.html).
 
 Common examples:
+
 ```
 \frac{a}{b}          → fractions
 \sqrt{x}             → square root
@@ -243,7 +236,7 @@ Common examples:
 Full TypeScript support with exported types:
 
 ```tsx
-import type { MathMarkdownProps } from 'react-math-markdown';
+import type { MathMarkdownProps } from 'react-math-markdown'
 ```
 
 ## License
