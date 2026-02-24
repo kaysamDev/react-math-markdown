@@ -48,8 +48,8 @@
     "devDependencies": {
         "@types/draft-js": "^0.11.18",
         "@types/node": "^25.3.0",
-        "@types/react": "^18.2.0",
-        "@types/react-dom": "^18.2.0",
+        "@types/react": "^19.2.14",
+        "@types/react-dom": "^19.2.3",
         "@typescript-eslint/eslint-plugin": "^6.0.0",
         "@typescript-eslint/parser": "^6.0.0",
         "@vitejs/plugin-react": "^4.2.0",
@@ -80,8 +80,8 @@
         "type": "git",
         "url": "https://github.com/kaysamDev/react-math-markdown"
     },
-    "homepage": "https://github.com/kaysamDev/react-math-markdown#readme",
-    "author": "Samuel B.",
+    "homepage": "https://react-math-markdown-demo.vercel.app/",
+    "author": "Samuel B. (kaysam)",
     "bugs": {
         "url": "https://github.com/kaysamDev/react-math-markdown/issues"
     }
