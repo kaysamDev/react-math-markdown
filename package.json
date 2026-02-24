@@ -80,7 +80,7 @@
         "type": "git",
         "url": "https://github.com/kaysamDev/react-math-markdown"
     },
-    "homepage": "https://www.npmjs.com/package/react-math-markdown",
+    "homepage": "https://react-math-markdown-demo.vercel.app/",
     "author": "Samuel B. (kaysam)",
     "bugs": {
         "url": "https://github.com/kaysamDev/react-math-markdown/issues"
