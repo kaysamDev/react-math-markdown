@@ -1,6 +1,6 @@
 {
     "name": "react-math-markdown",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Unified Markdown + LaTeX rendering component and Markdown ↔ Draft.js conversion utilities for React",
     "type": "module",
     "main": "./dist/react-math-markdown.cjs.js",
@@ -80,7 +80,7 @@
         "type": "git",
         "url": "https://github.com/kaysamDev/react-math-markdown"
     },
-    "homepage": "https://www.npmjs.com/package/react-math-markdown",
+    "homepage": "https://react-math-markdown-demo.vercel.app/",
     "author": "Samuel B. (kaysam)",
     "bugs": {
         "url": "https://github.com/kaysamDev/react-math-markdown/issues"
